@@ -14,9 +14,9 @@ interface Props {
 
 export function TimeRangePicker({ fromDate, toDate, onChange }: Props) {
   return (
-    <div style={{ display: 'flex', gap: '16px' }}>
-      <div>
-        <label>From</label>
+    <>
+      <div className="field-group">
+        <label className="field-label">From</label>
         <DatePicker
           selected={fromDate}
           onChange={(date) => onChange(date, toDate)}
@@ -30,8 +30,8 @@ export function TimeRangePicker({ fromDate, toDate, onChange }: Props) {
           placeholderText="Select date and time"
         />
       </div>
-      <div>
-        <label>To</label>
+      <div className="field-group">
+        <label className="field-label">To</label>
         <DatePicker
           selected={toDate}
           onChange={(date) => onChange(fromDate, date)}
@@ -45,6 +45,6 @@ export function TimeRangePicker({ fromDate, toDate, onChange }: Props) {
           placeholderText="Select date and time"
         />
       </div>
-    </div>
+    </>
   )
 }

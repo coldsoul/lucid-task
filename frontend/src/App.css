@@ -1,0 +1,219 @@
+/* ── Layout ── */
+
+.app {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 48px 24px 80px;
+}
+
+/* ── Header ── */
+
+.app-header {
+  margin-bottom: 28px;
+}
+
+.app-eyebrow {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+}
+
+.app-header h1 {
+  font-size: 26px;
+  font-weight: 600;
+  color: var(--text-heading);
+  letter-spacing: -0.4px;
+  line-height: 1.2;
+  margin-bottom: 5px;
+}
+
+.app-header p {
+  font-size: 14px;
+  color: var(--text-muted);
+  font-weight: 400;
+}
+
+/* ── Card ── */
+
+.card {
+  background: var(--bg-card);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04), 0 4px 16px rgba(0, 0, 0, 0.04);
+  padding: 24px;
+}
+
+/* ── Form fields ── */
+
+.form-row {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  margin-bottom: 16px;
+}
+
+.field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1 1 160px;
+  min-width: 0;
+}
+
+.field-label {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-muted);
+  letter-spacing: 0.01em;
+}
+
+.field-input {
+  background: var(--bg-input);
+  border: 1px solid var(--border-input);
+  border-radius: var(--radius-sm);
+  padding: 9px 12px;
+  font-family: var(--font);
+  font-size: 14px;
+  color: var(--text-heading);
+  outline: none;
+  width: 100%;
+  transition: border-color var(--ease), box-shadow var(--ease), background var(--ease);
+  -moz-appearance: textfield;
+}
+
+.field-input::-webkit-outer-spin-button,
+.field-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+.field-input:hover {
+  border-color: #C8C5C0;
+}
+
+.field-input:focus {
+  border-color: var(--border-focus);
+  box-shadow: 0 0 0 3px var(--accent-ring);
+  background: #fff;
+}
+
+/* ── Button ── */
+
+.btn {
+  width: 100%;
+  padding: 11px 20px;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 7px;
+  font-family: var(--font);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  letter-spacing: 0.01em;
+  transition: background var(--ease), box-shadow var(--ease);
+}
+
+.btn:not(:disabled):hover {
+  background: var(--accent-hover);
+  box-shadow: 0 4px 12px var(--accent-shadow);
+}
+
+.btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+/* ── Error ── */
+
+.error-msg {
+  margin-top: 14px;
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--error-border);
+  background: var(--error-bg);
+  color: var(--error);
+  font-size: 13px;
+}
+
+/* ── Result ── */
+
+.result-section {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+}
+
+.result-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.result-title {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.profit-chip {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--profit);
+  background: var(--profit-bg);
+  border: 1px solid var(--profit-border);
+  border-radius: 20px;
+  padding: 3px 10px;
+}
+
+.result-no-trade {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+@keyframes rowReveal {
+  from { opacity: 0; transform: translateY(4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.result-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid #F4F3F1;
+  font-size: 14px;
+  animation: rowReveal 200ms ease both;
+}
+
+.result-row:last-child {
+  border-bottom: none;
+}
+
+.result-row:nth-child(1) { animation-delay: 30ms; }
+.result-row:nth-child(2) { animation-delay: 60ms; }
+.result-row:nth-child(3) { animation-delay: 90ms; }
+.result-row:nth-child(4) { animation-delay: 120ms; }
+.result-row:nth-child(5) { animation-delay: 150ms; }
+.result-row:nth-child(6) { animation-delay: 180ms; }
+.result-row:nth-child(7) { animation-delay: 210ms; }
+
+.result-key {
+  color: var(--text-muted);
+}
+
+.result-val {
+  color: var(--text-heading);
+  font-weight: 500;
+}
+
+.result-val.profit {
+  color: var(--profit);
+  font-weight: 600;
+}

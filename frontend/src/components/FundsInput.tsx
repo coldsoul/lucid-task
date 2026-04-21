@@ -20,9 +20,10 @@ export function FundsInput({ value, onChange }: Props) {
   }
 
   return (
-    <div>
-      <label>Available Funds ($)</label>
+    <div className="field-group">
+      <label className="field-label">Available Funds ($)</label>
       <input
+        className="field-input"
         type="number"
         min={1}
         step="0.01"

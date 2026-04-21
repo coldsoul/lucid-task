@@ -2,8 +2,10 @@ import { useState } from 'react'
 import { TimeRangePicker } from './components/TimeRangePicker'
 import { FundsInput } from './components/FundsInput'
 import { ResultCard } from './components/ResultCard'
-import { fetchBestTrade, TradeResult } from './api/client'
+import { fetchBestTrade } from './api/client'
+import type { TradeResult } from './api/client'
 import { formatForApi } from './utils/format'
+import './App.css'
 
 export default function App() {
   const [fromDate, setFromDate] = useState<Date | null>(null)
@@ -35,21 +37,28 @@ export default function App() {
   }
 
   return (
-    <div style={{ maxWidth: 800, margin: '40px auto', padding: '0 16px' }}>
-      <h1>Stock Advisor</h1>
-      <div style={{ display: 'flex', gap: '16px', alignItems: 'flex-end', flexWrap: 'wrap' }}>
-        <TimeRangePicker
-          fromDate={fromDate}
-          toDate={toDate}
-          onChange={(from, to) => { setFromDate(from); setToDate(to) }}
-        />
-        <FundsInput value={funds} onChange={setFunds} />
-        <button onClick={handleSubmit} disabled={!canSubmit || loading}>
-          {loading ? 'Loading…' : 'Find Best Trade'}
+    <div className="app">
+      <header className="app-header">
+        <p className="app-eyebrow">Stock Advisor</p>
+        <h1>Find your best trade</h1>
+        <p>Enter a time window and available funds to find the optimal buy/sell pair.</p>
+      </header>
+
+      <div className="card">
+        <div className="form-row">
+          <TimeRangePicker
+            fromDate={fromDate}
+            toDate={toDate}
+            onChange={(from, to) => { setFromDate(from); setToDate(to) }}
+          />
+          <FundsInput value={funds} onChange={setFunds} />
+        </div>
+        <button className="btn" onClick={handleSubmit} disabled={!canSubmit || loading}>
+          {loading ? 'Finding best trade…' : 'Find Best Trade'}
         </button>
+        {error && <div className="error-msg">{error}</div>}
+        <ResultCard result={result} />
       </div>
-      {error && <p style={{ color: 'red' }}>{error}</p>}
-      <ResultCard result={result} />
     </div>
   )
 }
