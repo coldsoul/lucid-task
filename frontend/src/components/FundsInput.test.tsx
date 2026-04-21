@@ -1,7 +1,21 @@
-import { render, screen, fireEvent } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { describe, it, expect, vi } from 'vitest'
+import { useState } from 'react'
 import { FundsInput } from './FundsInput'
+
+function ControlledFundsInput({ onChange }: { onChange: (v: number) => void }) {
+  const [value, setValue] = useState(0)
+  return (
+    <FundsInput
+      value={value}
+      onChange={(v) => {
+        setValue(v)
+        onChange(v)
+      }}
+    />
+  )
+}
 
 describe('FundsInput', () => {
   it('renders label and input', () => {
@@ -17,11 +31,11 @@ describe('FundsInput', () => {
 
   it('calls onChange with numeric value when user types', async () => {
     const onChange = vi.fn()
-    render(<FundsInput value={0} onChange={onChange} />)
+    render(<ControlledFundsInput onChange={onChange} />)
     const input = screen.getByRole('spinbutton') as HTMLInputElement
 
-    // Simulate user typing by setting value and firing change event
-    fireEvent.change(input, { target: { value: '500' } })
+    await userEvent.clear(input)
+    await userEvent.type(input, '500')
 
     expect(onChange).toHaveBeenLastCalledWith(500)
   })
