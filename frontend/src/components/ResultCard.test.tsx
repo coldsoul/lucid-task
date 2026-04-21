@@ -38,7 +38,7 @@ describe('ResultCard', () => {
 
   it('displays shares, cost, and profit', () => {
     render(<ResultCard result={profitableResult} />)
-    expect(screen.getByText(/7/)).toBeInTheDocument()
+    expect(screen.getByText('7')).toBeInTheDocument()
     expect(screen.getByText(/996\.59/)).toBeInTheDocument()
     expect(screen.getByText(/115\.85/)).toBeInTheDocument()
   })
