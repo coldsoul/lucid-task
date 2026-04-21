@@ -35,3 +35,6 @@ frontend/dist/
 
 # Git worktrees
 .worktrees/
+
+#mempalace
+mempalace.yaml
