@@ -1,0 +1,28 @@
+# Claude Code local settings (machine-specific permissions)
+.claude/settings.local.json
+
+# Tooling runtime state and logs
+.nwave/des/logs/
+.superpowers/brainstorm/*/state/
+
+# OS artifacts
+.DS_Store
+Thumbs.db
+
+# Editor
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Dependencies (if any are added later)
+node_modules/
+__pycache__/
+*.pyc
+.venv/
+venv/

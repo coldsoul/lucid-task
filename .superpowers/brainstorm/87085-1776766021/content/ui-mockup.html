@@ -1,0 +1,86 @@
+<h2>Stock Advisor — UI Mockup</h2>
+<p class="subtitle">Proposed layout for the React frontend. Click to select your preferred approach.</p>
+
+<div class="cards">
+
+  <div class="card" data-choice="a" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div class="mockup">
+        <div class="mockup-header">Stock Advisor</div>
+        <div class="mockup-body" style="padding:16px;display:flex;flex-direction:column;gap:12px;">
+          <div style="display:flex;gap:12px;">
+            <div style="flex:1;">
+              <div class="label">From</div>
+              <input class="mock-input" style="width:100%;box-sizing:border-box;" placeholder="2026-01-01 09:00" readonly>
+            </div>
+            <div style="flex:1;">
+              <div class="label">To</div>
+              <input class="mock-input" style="width:100%;box-sizing:border-box;" placeholder="2026-04-30 17:00" readonly>
+            </div>
+            <div style="flex:1;">
+              <div class="label">Available Funds ($)</div>
+              <input class="mock-input" style="width:100%;box-sizing:border-box;" placeholder="1000.00" readonly>
+            </div>
+          </div>
+          <button class="mock-button" style="align-self:flex-start;">Find Best Trade</button>
+          <div style="border:1px solid #ddd;border-radius:6px;padding:14px;background:#f9f9f9;">
+            <div class="label" style="margin-bottom:8px;">Result</div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:13px;">
+              <div><strong>Buy at:</strong> 2026-01-15 10:23</div>
+              <div><strong>Sell at:</strong> 2026-02-03 14:05</div>
+              <div><strong>Buy price:</strong> $142.37</div>
+              <div><strong>Sell price:</strong> $158.92</div>
+              <div><strong>Shares bought:</strong> 7</div>
+              <div><strong>Total cost:</strong> $996.59</div>
+            </div>
+            <div style="margin-top:10px;font-size:15px;font-weight:bold;color:#2a7;border-top:1px solid #ddd;padding-top:10px;">
+              Profit: +$115.85
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>A — Horizontal Controls</h3>
+      <p>From, To, and Funds sit side-by-side in a single row. Compact, form-like. Result below in a card.</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="b" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div class="mockup">
+        <div class="mockup-header">Stock Advisor</div>
+        <div class="mockup-body" style="padding:16px;display:flex;gap:16px;">
+          <div style="width:220px;display:flex;flex-direction:column;gap:10px;border-right:1px solid #ddd;padding-right:16px;">
+            <div class="label">From</div>
+            <input class="mock-input" style="width:100%;box-sizing:border-box;" placeholder="2026-01-01 09:00" readonly>
+            <div class="label">To</div>
+            <input class="mock-input" style="width:100%;box-sizing:border-box;" placeholder="2026-04-30 17:00" readonly>
+            <div class="label">Available Funds ($)</div>
+            <input class="mock-input" style="width:100%;box-sizing:border-box;" placeholder="1000.00" readonly>
+            <button class="mock-button">Find Best Trade</button>
+          </div>
+          <div style="flex:1;">
+            <div class="label" style="margin-bottom:8px;">Result</div>
+            <div style="font-size:13px;display:flex;flex-direction:column;gap:6px;">
+              <div><strong>Buy at:</strong> 2026-01-15 10:23</div>
+              <div><strong>Sell at:</strong> 2026-02-03 14:05</div>
+              <div><strong>Buy price:</strong> $142.37</div>
+              <div><strong>Sell price:</strong> $158.92</div>
+              <div><strong>Shares bought:</strong> 7</div>
+              <div><strong>Total cost:</strong> $996.59</div>
+            </div>
+            <div style="margin-top:12px;font-size:16px;font-weight:bold;color:#2a7;">
+              Profit: +$115.85
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>B — Sidebar Controls</h3>
+      <p>Controls in a left panel, result in main area. More visual separation, feels like a dashboard.</p>
+    </div>
+  </div>
+
+</div>

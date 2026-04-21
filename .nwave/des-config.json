@@ -1,0 +1,17 @@
+{
+  "update_check": {
+    "last_checked": "2026-04-21T09:12:35.801147+00:00",
+    "skipped_versions": [],
+    "frequency": "daily"
+  },
+  "rigor": {
+    "profile": "standard",
+    "agent_model": "sonnet",
+    "reviewer_model": "haiku",
+    "review_enabled": true,
+    "double_review": false,
+    "tdd_phases": ["PREPARE", "RED_ACCEPTANCE", "RED_UNIT", "GREEN", "COMMIT"],
+    "refactor_pass": true,
+    "mutation_enabled": false
+  }
+}
