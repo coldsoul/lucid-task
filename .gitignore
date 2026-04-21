@@ -33,3 +33,6 @@ frontend/dist/
 
 # Brainstorm mockups
 .superpowers/
+
+# Git worktrees
+.worktrees/

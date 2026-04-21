@@ -8,7 +8,8 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "test": "vitest"
+    "test": "vitest",
+    "generate:types": "npx --yes openapi-typescript@7 ../openapi.json --output src/api/types.gen.ts"
   },
   "dependencies": {
     "react": "^19.2.5",

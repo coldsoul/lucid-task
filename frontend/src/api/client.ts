@@ -1,19 +1,7 @@
-export interface TradeRequest {
-  from: string   // YYYY-MM-DDTHH:MM
-  to: string
-  funds: number
-}
+import type { components, operations } from './types.gen'
 
-export interface TradeResult {
-  profitable: boolean
-  buy_at: string | null
-  sell_at: string | null
-  buy_price: number | null
-  sell_price: number | null
-  shares: number
-  total_cost: number
-  profit: number
-}
+export type TradeResult = components['schemas']['TradeResponse']
+export type TradeRequest = operations['best_trade_api_best_trade_get']['parameters']['query']
 
 export async function fetchBestTrade(params: TradeRequest): Promise<TradeResult> {
   const url = new URL('/api/best-trade', window.location.origin)

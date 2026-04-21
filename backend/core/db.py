@@ -1,8 +1,5 @@
 import duckdb
 from datetime import datetime
-from pathlib import Path
-
-DB_PATH = Path(__file__).parent.parent / "data" / "stock_prices.duckdb"
 
 
 def get_prices_in_range(

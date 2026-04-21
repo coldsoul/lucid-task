@@ -40,7 +40,8 @@ describe('ResultCard', () => {
     render(<ResultCard result={profitableResult} />)
     expect(screen.getByText('7')).toBeInTheDocument()
     expect(screen.getByText(/996\.59/)).toBeInTheDocument()
-    expect(screen.getByText(/115\.85/)).toBeInTheDocument()
+    // profit appears in both the header chip and the result row
+    expect(screen.getAllByText(/115\.85/).length).toBeGreaterThan(0)
   })
 
   it('shows no-profit message when not profitable', () => {

@@ -19,7 +19,7 @@ export function TimeRangePicker({ fromDate, toDate, onChange }: Props) {
         <label className="field-label">From</label>
         <DatePicker
           selected={fromDate}
-          onChange={(date) => onChange(date, toDate)}
+          onChange={(date: Date | null) => onChange(date, toDate)}
           showTimeSelect
           timeIntervals={1}
           dateFormat="yyyy-MM-dd HH:mm"
@@ -34,7 +34,7 @@ export function TimeRangePicker({ fromDate, toDate, onChange }: Props) {
         <label className="field-label">To</label>
         <DatePicker
           selected={toDate}
-          onChange={(date) => onChange(fromDate, date)}
+          onChange={(date: Date | null) => onChange(fromDate, date)}
           showTimeSelect
           timeIntervals={1}
           dateFormat="yyyy-MM-dd HH:mm"

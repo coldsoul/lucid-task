@@ -20,7 +20,7 @@ def db_conn():
 @pytest.fixture
 def client(db_conn):
     from backend.main import app
-    app.state.db = db_conn
-    # Use TestClient without context manager to skip lifespan
-    # (lifespan would try to open the real .duckdb file)
-    return TestClient(app)
+    from backend.api.deps import get_db
+    app.dependency_overrides[get_db] = lambda: db_conn
+    yield TestClient(app)
+    app.dependency_overrides.clear()
