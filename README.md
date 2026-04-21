@@ -13,20 +13,21 @@ A web app that finds the optimal buy/sell times for a stock within a user-define
 ```
 lucid_task/
 ├── backend/          # Python FastAPI service
-│   ├── main.py       # App entry point, lifespan, DB connection
-│   ├── api/          # REST routes (GET /api/best-trade)
+│   ├── main.py       # App entry point, lifespan, DB connection, static serving
+│   ├── api/          # REST routes (GET /api/best-trade, GET /api/health) + DI deps
 │   ├── core/         # O(n) trade optimiser + DuckDB query helper
 │   └── data/         # GBM data generator + stock_prices.duckdb
-└── frontend/         # React + TypeScript SPA (Vite)
-    └── src/
-        ├── App.tsx       # Form orchestration
-        ├── components/   # TimeRangePicker, FundsInput, ResultCard
-        └── api/          # Typed fetch client
+├── frontend/         # React + TypeScript SPA (Vite)
+│   └── src/
+│       ├── App.tsx       # Form orchestration
+│       ├── components/   # TimeRangePicker, FundsInput, ResultCard
+│       └── api/          # Typed fetch client + generated types
+└── Dockerfile        # Multi-stage build: frontend → backend serves both
 ```
 
-The frontend dev server proxies `/api/*` to the backend on port 8000.
+The frontend dev server proxies `/api/*` to the backend on port 8000. In production, the backend serves the built frontend directly from `frontend/dist/`.
 
-## Running locally
+## Running locally (development)
 
 **Prerequisites:** Python 3.12+, Node.js 18+
 
@@ -61,8 +62,39 @@ Open `http://localhost:5173` once both servers are running.
 
 ```bash
 # Backend
-cd backend && pytest
+PYTHONPATH=. python -m pytest backend/tests/
 
 # Frontend
-cd frontend && npm run test
+cd frontend && npm test
 ```
+
+## Running in production (Docker)
+
+```bash
+# One-time: generate the price database (required before building the image)
+cd backend && python data/generate.py && cd ..
+
+# Build and run
+docker build -t stock-advisor .
+docker run -p 8000:8000 \
+  -v "$(pwd)/backend/data/stock_prices.duckdb:/app/backend/data/stock_prices.duckdb:ro" \
+  stock-advisor
+```
+
+Open `http://localhost:8000`. Both the frontend and API are served from the same origin — no CORS configuration needed.
+
+**Environment variables:**
+
+| Variable | Default | Description |
+|---|---|---|
+| `ALLOWED_ORIGINS` | `http://localhost:5173` | Comma-separated CORS origins (dev only; not needed when serving from same origin) |
+
+## API
+
+`GET /api/best-trade?from=<ISO>&to=<ISO>&funds=<number>`
+
+Returns the optimal buy/sell pair within the requested time window.
+
+`GET /api/health`
+
+Returns `{"status": "ok"}`. Use for liveness checks.
