@@ -1,10 +1,6 @@
 # Claude Code local settings (machine-specific permissions)
 .claude/settings.local.json
 
-# Tooling runtime state and logs
-.nwave/des/logs/
-.superpowers/brainstorm/*/state/
-
 # OS artifacts
 .DS_Store
 Thumbs.db
@@ -33,6 +29,9 @@ frontend/dist/
 
 # Brainstorm mockups
 .superpowers/
+
+#nwave
+.nwave/
 
 # Git worktrees
 .worktrees/
