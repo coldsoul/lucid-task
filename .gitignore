@@ -20,9 +20,16 @@ Thumbs.db
 .env.local
 .env.*.local
 
-# Dependencies (if any are added later)
-node_modules/
-__pycache__/
+# Python
+backend/.venv/
+backend/__pycache__/
+backend/**/__pycache__/
+backend/data/stock_prices.duckdb
 *.pyc
-.venv/
-venv/
+
+# Frontend
+frontend/node_modules/
+frontend/dist/
+
+# Brainstorm mockups
+.superpowers/
