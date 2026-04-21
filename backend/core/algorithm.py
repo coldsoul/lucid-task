@@ -57,6 +57,8 @@ def find_best_trade(
         return _no_trade
 
     shares = math.floor(funds / best_buy_price)
+    if shares == 0:
+        return _no_trade
     total_cost = round(shares * best_buy_price, 2)
     profit = round(shares * (best_sell_price - best_buy_price), 2)
 

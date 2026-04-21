@@ -79,8 +79,7 @@ def test_whole_shares_floor_division():
 def test_funds_too_small_for_one_share():
     prices = [(T0, 200.0), (T1, 300.0)]
     result = find_best_trade(prices, 100.0)
-    # Can't buy even one share at 200 with only 100
-    assert result.profitable is True  # trade exists in market
+    assert result.profitable is False
     assert result.shares == 0
     assert result.profit == 0.0
 
