@@ -89,6 +89,20 @@ Open `http://localhost:8000`. Both the frontend and API are served from the same
 |---|---|---|
 | `ALLOWED_ORIGINS` | `http://localhost:5173` | Comma-separated CORS origins (dev only; not needed when serving from same origin) |
 
+## Regenerating the OpenAPI schema and frontend types
+
+Run these two steps whenever a backend model or route changes:
+
+```bash
+# 1. Update openapi.json from the live FastAPI schema
+python -c "import json; from backend.main import app; print(json.dumps(app.openapi(), indent=2))" > openapi.json
+
+# 2. Regenerate TypeScript types from the updated schema
+cd frontend && npm run generate:types
+```
+
+`openapi.json` is the bridge — FastAPI generates it from the Python Pydantic models, and `openapi-typescript` turns it into `frontend/src/api/types.gen.ts`. Both files should be committed together with any model change.
+
 ## API
 
 `GET /api/best-trade?from=<ISO>&to=<ISO>&funds=<number>`
