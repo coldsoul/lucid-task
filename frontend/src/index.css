@@ -157,6 +157,13 @@ body {
   cursor: not-allowed !important;
 }
 
+/* dim the Sa and Su column headers to signal weekend unavailability */
+.react-datepicker__day-name:first-child,
+.react-datepicker__day-name:last-child {
+  color: #C0BCB8 !important;
+  text-decoration: line-through;
+}
+
 .react-datepicker__navigation-icon::before {
   border-color: #B0ACA8 !important;
   border-width: 2px 2px 0 0 !important;
@@ -198,6 +205,12 @@ body {
   background: var(--accent) !important;
   color: #fff !important;
   font-weight: 600 !important;
+}
+
+.react-datepicker__time-list-item--disabled {
+  color: #D8D4D0 !important;
+  cursor: not-allowed !important;
+  pointer-events: none;
 }
 
 .react-datepicker__triangle {

@@ -6,6 +6,11 @@ const DATASET_END = new Date('2026-04-30T17:00:00')
 const TRADING_OPEN = new Date(0, 0, 0, 9, 0)
 const TRADING_CLOSE = new Date(0, 0, 0, 17, 0)
 
+const isWeekday = (date: Date) => {
+  const day = date.getDay()
+  return day !== 0 && day !== 6
+}
+
 interface Props {
   fromDate: Date | null
   toDate: Date | null
@@ -27,6 +32,7 @@ export function TimeRangePicker({ fromDate, toDate, onChange }: Props) {
           maxDate={DATASET_END}
           minTime={TRADING_OPEN}
           maxTime={TRADING_CLOSE}
+          filterDate={isWeekday}
           placeholderText="Select date and time"
         />
       </div>
@@ -42,9 +48,11 @@ export function TimeRangePicker({ fromDate, toDate, onChange }: Props) {
           maxDate={DATASET_END}
           minTime={TRADING_OPEN}
           maxTime={TRADING_CLOSE}
+          filterDate={isWeekday}
           placeholderText="Select date and time"
         />
       </div>
+      <p className="field-hint">Weekdays only · 09:00 – 17:00</p>
     </>
   )
 }
